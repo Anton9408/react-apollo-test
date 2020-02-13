@@ -1,7 +1,19 @@
 import React from 'react';
+import {Layout} from 'antd';
 
-const Layout = () => (
-	<h1>Layout</h1>
+import {Logo, ContentWrapper} from './Layout.styled';
+
+const {Header, Content} = Layout;
+
+const LayoutComponent = () => (
+	<Layout>
+		<Header>
+			<Logo>Top JavaScript Repos</Logo>
+		</Header>
+		<Content>
+			<ContentWrapper>Content</ContentWrapper>
+		</Content>
+	</Layout>
 );
 
-export default Layout;
+export default LayoutComponent;
