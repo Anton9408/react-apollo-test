@@ -14,7 +14,7 @@ const ListRepositories = ({listData, loading}) => (
 		size="default"
 		bordered
 		pagination={{
-			pageSize: 10
+			position: 'both'
 		}}
 		loading={loading}
 		dataSource={listData}
