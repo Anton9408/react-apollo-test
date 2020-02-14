@@ -1,19 +1,33 @@
 import React from 'react';
 import {Layout} from 'antd';
 
-import {Logo, ContentWrapper} from './Layout.styled';
+/* TODO: Папку позже поменять */
+import ListRepositories from '../List/ListRepositories';
 
-const {Header, Content} = Layout;
+import ContentWrapper from './Layout.styled';
 
-const LayoutComponent = () => (
-	<Layout>
-		<Header>
-			<Logo>Top JavaScript Repos</Logo>
-		</Header>
-		<Content>
-			<ContentWrapper>Content</ContentWrapper>
-		</Content>
-	</Layout>
-);
+import useLayout from './hooks/useLayout';
+
+const {Content} = Layout;
+
+const LayoutComponent = () => {
+	const {loading, error, listData} = useLayout('stars-desc', 'JavaScript');
+
+	return (
+		<Layout>
+			<Content>
+				<ContentWrapper>
+					<ListRepositories
+						listData={listData}
+						loading={loading}
+					/>
+					{
+						error && `Error: ${error}`
+					}
+				</ContentWrapper>
+			</Content>
+		</Layout>
+	);
+};
 
 export default LayoutComponent;
