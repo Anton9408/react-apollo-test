@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import {Input, Button} from 'antd';
 import {SearchOutlined} from '@ant-design/icons';
 
-// import SelectLicence from './SelectLicence/SelectLicence';
-
 import useSearchForm from './hooks/useSearchForm';
 
 import {FormStyled, SelectStyled} from './SearchForm.styled';

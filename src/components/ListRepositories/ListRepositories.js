@@ -18,7 +18,7 @@ const ListRepositories = ({searchQuery, limit}) => {
 
 	return (
 		<List
-			itemLayout="horizontal"
+			itemLayout="vertical"
 			size="default"
 			loading={loading}
 			dataSource={list}
