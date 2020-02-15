@@ -6,7 +6,6 @@ import {InMemoryCache} from 'apollo-cache-inmemory';
 import Layout from './Layout/Layout';
 
 const {
-	NODE_ENV,
 	REACT_APP_GRAPHQL_URI,
 	REACT_APP_GRAPHQL_TOKEN
 } = process.env;
@@ -14,8 +13,6 @@ const {
 const client = new ApolloClient({
 	uri: REACT_APP_GRAPHQL_URI,
 	cache: new InMemoryCache(),
-	connectToDevTools: NODE_ENV === 'development',
-	dataIdFromObject: o => o.id,
 	request: operation => {
 		const token = REACT_APP_GRAPHQL_TOKEN;
 

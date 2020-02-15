@@ -1,23 +1,30 @@
-import {useQuery} from '@apollo/react-hooks';
+import {useState} from 'react';
 
-import currentMonthFirstDay from '../../../utils/currentMonthFirstDay';
+import {
+	getSort,
+	getLang,
+	getCreated,
+	getLicenseId,
+	getQueryName
+} from '../../../utils/utils';
 
-import getListRepositories from '../gql/getListRepositories';
-
-const useLayout = (sort, language, created) => {
-	const searchData = `sort:${sort} language:${language} created:>=${created || currentMonthFirstDay()}`;
-	const limit = 10;
-	const {loading, error, data} = useQuery(getListRepositories, {
-		variables: {
-			searchData,
-			limit: limit || 10
-		}
+const useLayout = () => {
+	const [formData, setFormData] = useState({
+		query: '',
+		license: ''
 	});
+	const searchQuery = [
+		getSort('stars', 'desc'),
+		getLang('Javascript'),
+		getCreated(),
+		getQueryName(formData.query),
+		getLicenseId(formData.license)
+	].join(' ');
 
 	return {
-		loading,
-		error,
-		listData: data && data.search.edges
+		limit: 5,
+		searchQuery,
+		setFormData
 	};
 };
 
