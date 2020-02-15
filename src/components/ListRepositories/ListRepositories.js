@@ -4,6 +4,7 @@ import {List, Avatar} from 'antd';
 import {StarOutlined, FieldTimeOutlined} from '@ant-design/icons';
 
 import IconText from './IconText/IconText';
+import LoadMoreButton from './LoadMoreButton/LoadMoreButton';
 
 import useListRepositories from './hooks/useListRepositories';
 
@@ -11,14 +12,26 @@ const {Item} = List;
 const {Meta} = Item;
 
 const ListRepositories = ({searchQuery, limit}) => {
-	const {loading, listData, totalCount} = useListRepositories(searchQuery, limit);
+	const {
+		loading, list, totalCount, fetchMore, endCursor, hasNextPage
+	} = useListRepositories(searchQuery, limit);
 
 	return (
 		<List
 			itemLayout="horizontal"
 			size="default"
 			loading={loading}
-			dataSource={listData}
+			dataSource={list}
+			loadMore={(
+				<LoadMoreButton
+					loading={loading}
+					fetchMore={fetchMore}
+					endCursor={endCursor}
+					hasNextPage={hasNextPage}
+					searchQuery={searchQuery}
+					limit={limit}
+				/>
+			)}
 			header={`Count repositories: ${totalCount || 0}`}
 			renderItem={({node}) => (
 				<Item

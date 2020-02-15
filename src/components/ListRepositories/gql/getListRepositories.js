@@ -1,8 +1,8 @@
 import {gql} from 'apollo-boost';
 
 const getListRepositories = gql`
-    query getListRepositories($searchQuery: String!, $limit: Int) {
-        search(query: $searchQuery, first: $limit, type: REPOSITORY) {
+    query getListRepositories($searchQuery: String!, $limit: Int, $cursorBefore: String) {
+        search(query: $searchQuery, first: $limit, after: $cursorBefore, type: REPOSITORY) {
             repositoryCount
             edges {
                 node {
@@ -25,6 +25,11 @@ const getListRepositories = gql`
                         createdAt
                     }
                 }
+                cursor
+            }
+            pageInfo {
+                endCursor
+                hasNextPage
             }
         }
     }

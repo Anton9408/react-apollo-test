@@ -3,7 +3,9 @@ import {useQuery} from '@apollo/react-hooks';
 import getListRepositories from '../gql/getListRepositories';
 
 const useListRepositories = (searchQuery, limit) => {
-	const {loading, error, data} = useQuery(getListRepositories, {
+	const {
+		loading, error, data, fetchMore
+	} = useQuery(getListRepositories, {
 		variables: {
 			searchQuery,
 			limit
@@ -13,8 +15,11 @@ const useListRepositories = (searchQuery, limit) => {
 	return {
 		loading,
 		error,
-		listData: data && data.search.edges,
-		totalCount: data && data.search.repositoryCount
+		fetchMore,
+		list: data && data.search && data.search.edges,
+		totalCount: data && data.search && data.search.repositoryCount,
+		endCursor: data && data.search.pageInfo && data.search.pageInfo.endCursor,
+		hasNextPage: data && data.search.pageInfo && data.search.pageInfo.hasNextPage
 	};
 };
 
