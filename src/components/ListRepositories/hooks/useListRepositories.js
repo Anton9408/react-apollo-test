@@ -9,7 +9,8 @@ const useListRepositories = (searchQuery, limit) => {
 		variables: {
 			searchQuery,
 			limit
-		}
+		},
+		notifyOnNetworkStatusChange: true
 	});
 
 	return {
