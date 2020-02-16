@@ -15,6 +15,10 @@ const SearchForm = ({setFormData}) => {
 		form, listLicence, loading, error, onFinish
 	} = useSearchForm(setFormData);
 
+	if (error) {
+		return null;
+	}
+
 	return (
 		<FormStyled
 			form={form}
@@ -36,7 +40,6 @@ const SearchForm = ({setFormData}) => {
 				<SelectStyled
 					defaultValue="All license"
 					loading={loading}
-					disabled={error}
 				>
 					<Option key={1} id="all">All license</Option>
 					{

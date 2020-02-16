@@ -21,7 +21,7 @@ const ListRepositories = ({searchQuery, limit}) => {
 
 	if (error) {
 		return (
-			<Error error={error}/>
+			<Error errorMessage="Error getting list of repositories."/>
 		);
 	}
 
