@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {List, Avatar} from 'antd';
+import {Avatar} from 'antd';
 import {StarOutlined, FieldTimeOutlined} from '@ant-design/icons';
 
 import IconText from './IconText/IconText';
 import LoadMoreButton from './LoadMoreButton/LoadMoreButton';
 
 import useListRepositories from './hooks/useListRepositories';
+
+import List from './ListRepositories.styled';
 
 const {Item} = List;
 const {Meta} = Item;

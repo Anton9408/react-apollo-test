@@ -28,9 +28,6 @@ const SearchForm = ({setFormData}) => {
 				<Input
 					prefix={<SearchOutlined/>}
 					placeholder="Type here ..."
-					style={{
-						minWidth: '20em'
-					}}
 				/>
 			</Item>
 			<Item

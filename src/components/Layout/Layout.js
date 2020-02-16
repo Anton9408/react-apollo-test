@@ -4,7 +4,7 @@ import {Layout} from 'antd';
 import ListRepositories from '../ListRepositories/ListRepositories';
 import SearchForm from '../SearchForm/SearchForm';
 
-import Content from './Layout.styled';
+import {ContentWrapper, PageHeaderWrapper} from './Layout.styled';
 
 import useLayout from './hooks/useLayout';
 
@@ -17,7 +17,11 @@ const LayoutComponent = () => {
 
 	return (
 		<Layout>
-			<Content>
+			<ContentWrapper>
+				<PageHeaderWrapper
+					title="TOP"
+					subTitle="JavaScript repository in month"
+				/>
 				<SearchForm
 					setFormData={setFormData}
 				/>
@@ -25,7 +29,7 @@ const LayoutComponent = () => {
 					limit={limit}
 					searchQuery={searchQuery}
 				/>
-			</Content>
+			</ContentWrapper>
 		</Layout>
 	);
 };
