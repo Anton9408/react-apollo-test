@@ -10,7 +10,7 @@ const {
 	REACT_APP_GRAPHQL_TOKEN
 } = process.env;
 
-const client = new ApolloClient({
+const config = {
 	uri: REACT_APP_GRAPHQL_URI,
 	cache: new InMemoryCache(),
 	request: operation => {
@@ -22,7 +22,9 @@ const client = new ApolloClient({
 			}
 		});
 	}
-});
+};
+
+const client = new ApolloClient(config);
 
 const App = () => (
 	<ApolloProvider client={client}>

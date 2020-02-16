@@ -13,10 +13,10 @@ const useSearchForm = setFormData => {
 
 	return {
 		form,
-		onFinish,
+		error,
+		loading,
 		listLicence: data && data.licenses,
-		loadingLicence: loading,
-		errorLicence: error
+		onFinish
 	};
 };
 

@@ -12,7 +12,7 @@ const {Option} = SelectStyled;
 
 const SearchForm = ({setFormData}) => {
 	const {
-		form, listLicence, loadingLicence, onFinish
+		form, listLicence, loading, error, onFinish
 	} = useSearchForm(setFormData);
 
 	return (
@@ -35,7 +35,8 @@ const SearchForm = ({setFormData}) => {
 			>
 				<SelectStyled
 					defaultValue="All license"
-					loading={loadingLicence}
+					loading={loading}
+					disabled={error}
 				>
 					<Option key={1} id="all">All license</Option>
 					{
