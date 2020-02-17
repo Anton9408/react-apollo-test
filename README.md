@@ -1,4 +1,4 @@
-# React-appolo-test
+# React-apollo-test
 
 ## In order to start a project, you need:
 
